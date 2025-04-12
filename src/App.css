@@ -5,6 +5,7 @@
   align-items: center;
   gap: 20px;
   padding: 50px;
+  box-sizing: border-box;
 }
 
 /* Styling for header section */
@@ -14,20 +15,38 @@
   color: #fff;
 }
 
+/* New container: Arrange text and paragraph sections in a row */
+.content-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 17px;
+}
+
+/* Left side: Text container */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 600px; /* Fixes the width for the text section */
+}
+
 /* General text box styling */
 .text-box-section {
   border: 2px solid #3BB277;
   padding: 20px;
-  width: 600px; /* A fixed width, for example */
+  width: 600px; /* Fixed width, matching .text */
+  margin-bottom: 15px;
 }
 
 /* Button styling to match the boxes */
 .styled-button {
   color: #3BB277;
-  border: 2px solid #3BB277;  /* Same green border as the text box */
+  border: 2px solid #3BB277;
   padding: 20px;
-  font-size: 12px;
-  border-radius: 0px;
+  font-size: 17px;
+  border-radius: 0;
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease;
   width: 80%;
@@ -37,4 +56,22 @@
 /* Button hover effect */
 .styled-button:hover {
   border-color: #fff;
+}
+
+/* Right side: Paragraph container */
+.paragraph {
+  flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* Paragraph box styling */
+.paragraph-box-section {
+  border: 2px solid #3BB277;
+  padding: 20px;
+  width: 70%;                 /* A relative width that adapts */
+  max-width: 800px;           /* Optional: cap on large screens */
+  box-sizing: border-box;
+  margin: 20px 0;             /* Vertical spacing */
 }
