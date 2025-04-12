@@ -1,0 +1,88 @@
+/* The overall container covers the full viewport */
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Top border block: fixed at the top left and spans the left area */
+.top-left-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30vw; /* Left area width */
+  height: 35px; /* Height of the border block */
+  background-color: #3bb277;
+  z-index: 10;
+}
+
+/* Left section: fixed below the top block */
+.left-section {
+  position: fixed;
+  top: 35px; /* Immediately below the top border */
+  left: 0;
+  width: 30vw; /* Spans from left edge to the vertical divider */
+  height: calc(
+    100vh - 35px
+  ); /* From below the border to the bottom of the viewport */
+  box-sizing: border-box;
+  background-color: #000; /* Optional background */
+  overflow: hidden; /* Hide overflow if needed */
+  z-index: 5;
+}
+
+/* Text container: styles for static text (when feed is inactive) */
+.text-container {
+  padding: 10px;
+  position: relative;
+  z-index: 6;
+}
+
+/* Camera container: occupies the full left section */
+.camera-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0; /* Places the container so its top edge touches the top of left-section */
+  left: 0;
+}
+
+/* Camera feed image: shrinks the feed without cropping, showing the entire view */
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Scales the image down, preserving aspect ratio; letterboxing may occur */
+  display: block;
+}
+
+/* Vertical divider: fixed at the boundary of the left area */
+.vertical-divider {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 30vw; /* Positioned at 30% of the viewport width */
+  width: 2px; /* Divider thickness */
+  background-color: #3bb277;
+  z-index: 10;
+}
+
+/* Bottom-left button: fixed at the bottom left, spanning the left area */
+.bottom-left-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 30vw; /* Matches the left area width */
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #000;
+  background-color: #3bb277;
+  border: 1px solid #3bb277;
+  border-radius: 0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  z-index: 15;
+}
+
+.bottom-left-button:hover {
+  border-color: #fff;
+}
