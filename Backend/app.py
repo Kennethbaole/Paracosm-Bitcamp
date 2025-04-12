@@ -4,11 +4,14 @@ import csv
 import copy
 import argparse
 import itertools
+import json
 from collections import Counter, deque
 
 import cv2 as cv
 import numpy as np
 import mediapipe as mp
+import asyncio
+import websockets
 from flask import Flask, Response
 from flask_cors import CORS
 
@@ -20,6 +23,8 @@ from model import PointHistoryClassifier
 # --- Flask setup ---
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests from your frontend
+
+WEBSOCKET_PORT = 8765
 
 # --- Initialize your modules exactly as in your existing code ---
 def get_args():
@@ -307,13 +312,36 @@ def gen_frames():
         # Yield the frame in a multipart format
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
-
 # --- Flask route to serve the video stream ---
 @app.route('/video_feed')
 def video_feed():
     return Response(gen_frames(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# --- Run the Flask app ---
+# --- Asynchronous WebSocket server to send gesture data ---
+# This example uses the websockets library.
+async def gesture_server(websocket, path):
+    # In a production system, you’d share gesture data between the video stream and WebSocket.
+    # Here, as an example, we wait for a gesture event and send the current zoom factor.
+    while True:
+        await asyncio.sleep(0.1)
+        # For example, send the zoom factor every 100ms.
+        gesture_data = {"gesture": "zoom", "value": float(global_zoom_factor)}
+        await websocket.send(json.dumps(gesture_data))
+
+# Function to run the WebSocket server in the background
+def start_websocket_server():
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+    start_server = websockets.serve(gesture_server, "0.0.0.0", WEBSOCKET_PORT)
+    loop.run_until_complete(start_server)
+    loop.run_forever()
+
 if __name__ == '__main__':
+    # Run the WebSocket server on a background thread:
+    import threading
+    ws_thread = threading.Thread(target=start_websocket_server, daemon=True)
+    ws_thread.start()
+
+    # Run the Flask app (for video streaming)
     app.run(host='0.0.0.0', port=5025, debug=True)
