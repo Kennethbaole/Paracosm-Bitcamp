@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UnityComponent from "../UnityComponent"; // Adjust the path if necessary
 import "./Game.css";
 
 function Game() {
@@ -10,6 +11,11 @@ function Game() {
 
   return (
     <div className="game-container">
+      {/* Unity WebGL Application Container */}
+      <div className="unity-container">
+        <UnityComponent />
+      </div>
+
       {/* Fixed top border block */}
       <div className="top-left-block"></div>
 
