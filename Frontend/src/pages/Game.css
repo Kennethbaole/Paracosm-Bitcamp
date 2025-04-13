@@ -17,7 +17,6 @@
   z-index: 10;
 }
 
-/* Left section */
 .left-section {
   position: fixed;
   top: 35px;
@@ -26,32 +25,31 @@
   height: calc(100vh - 35px);
   box-sizing: border-box;
   background-color: #000;
-  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   z-index: 5;
 }
 
-/* Text container */
 .text-container {
   padding: 10px;
-  position: relative;
-  z-index: 6;
   color: #fff;
+  /* No need for extra bottom margin here */
 }
 
 /* Camera container */
+/* Modify or add these rules so the camera feed appears in flow below the text */
 .camera-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  flex: 1;
+  /* Remove any margin that might introduce a gap */
+  margin-top: 0;
 }
 
-/* Camera feed image */
+/* Ensure the camera feed image fills the container */
 .camera-feed {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover; /* or "contain", as preferred */
   display: block;
 }
 

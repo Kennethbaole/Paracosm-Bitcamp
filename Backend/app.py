@@ -210,13 +210,10 @@ def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text
     info_text = handedness.classification[0].label
     if hand_sign_text != "":
         info_text = info_text + ':' + hand_sign_text
-    cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4),
-               cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+    cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
     if finger_gesture_text != "":
-        cv.putText(image, "Finger Gesture:" + finger_gesture_text, (10, 60),
-                   cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-        cv.putText(image, "Finger Gesture:" + finger_gesture_text, (10, 60),
-                   cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+        cv.putText(image, "Finger Gesture:" + finger_gesture_text, (10, 60), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+        cv.putText(image, "Finger Gesture:" + finger_gesture_text, (10, 60), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
     return image
 
 def draw_point_history(image, point_history):
@@ -226,17 +223,13 @@ def draw_point_history(image, point_history):
     return image
 
 def draw_info(image, fps, mode, number):
-    cv.putText(image, "FPS:" + str(fps), (10, 30),
-               cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-    cv.putText(image, "FPS:" + str(fps), (10, 30),
-               cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+    cv.putText(image, "FPS:" + str(fps), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+    cv.putText(image, "FPS:" + str(fps), (10, 30),cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
     mode_string = ['Logging Key Point', 'Logging Point History']
     if 1 <= mode <= 2:
-        cv.putText(image, "MODE:" + mode_string[mode - 1], (10, 90),
-                   cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+        cv.putText(image, "MODE:" + mode_string[mode - 1], (10, 90), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
         if 0 <= number <= 9:
-            cv.putText(image, "NUM:" + str(number), (10, 110),
-                       cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
+            cv.putText(image, "NUM:" + str(number), (10, 110), cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
     return image
 
 # --- Generator function: stream frames instead of using cv.imshow ---
@@ -285,18 +278,20 @@ def gen_frames():
                     index_finger = landmark_list[8]
                     distance = np.hypot(index_finger[0] - thumb[0], index_finger[1] - thumb[1])
                     min_distance = 30
-                    max_distance = 150
-                    global_zoom_factor = np.interp(distance, [min_distance, max_distance], [1.0, 2.0])
-                    cv.putText(debug_image, f"Zoom: {global_zoom_factor:.2f}",
-                               (10, 130), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 255), 2, cv.LINE_AA)
+                    max_distance = 250
+                    global_zoom_factor = np.interp(distance, [min_distance, max_distance], [1.0, 3.0])
+                    cv.putText(debug_image, f"Zoom: {global_zoom_factor:.2f}", (10, 130), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 255), 2, cv.LINE_AA)
                 else:
                     global_zoom_factor = 1.0
 
+                # Left hand rotate hand gesture 
+                # if handedness.classification[0].label == "Left":
+                #    index_finger = landmark_list[8]
+                    
+
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
                 debug_image = draw_landmarks(debug_image, landmark_list)
-                debug_image = draw_info_text(debug_image, brect, handedness,
-                                             keypoint_classifier_labels[hand_sign_id],
-                                             point_history_classifier_labels[most_common_fg_id[0][0]])
+                debug_image = draw_info_text(debug_image, brect, handedness,keypoint_classifier_labels[hand_sign_id], point_history_classifier_labels[most_common_fg_id[0][0]])
         else:
             point_history.append([0, 0])
 
@@ -310,8 +305,7 @@ def gen_frames():
         frame_bytes = buffer.tobytes()
 
         # Yield the frame in a multipart format
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+        yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
 # --- Flask route to serve the video stream ---
 @app.route('/video_feed')
 def video_feed():
