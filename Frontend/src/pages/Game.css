@@ -86,3 +86,10 @@
 .bottom-left-button:hover {
   border-color: #fff;
 }
+
+.unity-container {
+  width: 800px;      /* Example width */
+  height: 600px;     /* Example height */
+  margin: auto;      /* Center it, for example */
+  /* Optionally adjust positioning or z-index if needed */
+}

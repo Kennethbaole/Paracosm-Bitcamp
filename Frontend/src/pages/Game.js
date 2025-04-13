@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UnityComponent from "../UnityComponent"; // Adjust the path if necessary
+import UnityComponent from "../UnityComponent";
 import "./Game.css";
 
 function Game() {

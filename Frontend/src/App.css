@@ -75,10 +75,3 @@
   box-sizing: border-box;
   margin: 20px 0;             /* Vertical spacing */
 }
-
-.unity-container {
-  width: 800px;      /* Example width */
-  height: 600px;     /* Example height */
-  margin: auto;      /* Center it, for example */
-  /* Optionally adjust positioning or z-index if needed */
-}

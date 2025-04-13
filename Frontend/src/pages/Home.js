@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 function Home() {
   const navigate = useNavigate();
 
-  const handleStart = () => {
+  const goToGame = () => {
     navigate("/game");
   };
 
@@ -25,11 +25,9 @@ function Home() {
             <p>{"> PERSONAL"}</p>
           </div>
           <div className="text-box-section">
-            <p>{"> VIRTUAL"}</p>
-            <button className="styled-button" onClick={handleStart}>
-              {"> START <"}
-            </button>
-          </div>
+          <p>{"> VIRTUAL"}</p>
+          <button onClick={goToGame}>{"> START <"}</button>
+        </div>
           <div className="text-box-section">
             <p>{"> SHARED"}</p>
           </div>
