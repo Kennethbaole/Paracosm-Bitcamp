@@ -31,7 +31,7 @@ function Game() {
         ) : (
           <div className="text-container">
             <h2>{"> SECTION 1"}</h2>
-            <p>Shift your world with a gesture. Rotate. Zoom. Explore a place born from silence.</p>
+            <p>Shift your world with a gesture. Rotate. Zoom. Explore a place born from your command.</p>
           </div>
         )}
       </div>
@@ -42,7 +42,7 @@ function Game() {
       <div className="right-section">
         <div className="right-divider"></div>
         <h1 className="right-title">
-          THE MAP IS BLANK. THE MEMORY IS YOURS. BUILD THE UNSEEN
+          THE MAP IS BLANK. THE MEMORY IS YOURS. BUILD THE <span className="blink">UNSEEN</span>
         </h1>
         <div className="right-buttons">
           <button className="generate-random">{"> GENERATE"}</button>

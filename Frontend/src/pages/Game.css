@@ -150,3 +150,18 @@
   background-color: #000;
   color: #3bb277;
 }
+
+.blink {
+  animation: blinkEffect 3s infinite;
+}
+
+@keyframes blinkEffect {
+  0%,
+  66.67% {
+    opacity: 1;
+  }
+  66.67%,
+  100% {
+    opacity: 0;
+  }
+}
