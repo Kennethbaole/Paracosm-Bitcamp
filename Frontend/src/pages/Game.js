@@ -30,8 +30,12 @@ function Game() {
           </div>
         ) : (
           <div className="text-container">
-            <h2>{"> SECTION 1"}</h2>
-            <p>Shift your world with a gesture. Rotate. Zoom. Explore a place born from your command.</p>
+            <h2 className="Section1-text">{"> SECTION 1 - Command With Movement"}</h2>
+            <p className="Section1-content">Shift your world with a gesture. Rotate. Zoom. Explore a place born from your command.</p>
+            <h2 className="Section2-text">{"> SECTION 2 - Speech Manipulatiom"}</h2>
+            <p className="Section2-content">Command your virtual space with your voice; let every word transform your surroundings.</p>
+            <h2 className="Section3-text">{"> SECTION 3 - Explore Your Creation"}</h2>
+            <p className="Section3-content">Plunge into the World You’ve Crafted</p>
           </div>
         )}
       </div>
@@ -45,8 +49,8 @@ function Game() {
           THE MAP IS BLANK. THE MEMORY IS YOURS. BUILD THE <span className="blink">UNSEEN</span>
         </h1>
         <div className="right-buttons">
-          <button className="generate-random">{"> GENERATE"}</button>
-          <button className="vr-activation-button">{"> ENTER"}</button>
+          <button className="generate-random">{"> GENERATE"}<span className="blink2">_</span></button>
+          <button className="vr-activation-button">{"> ENTER"}<span className="blink2">_</span></button>
         </div>
         {/* Additional right-side content can be placed here */}
       </div>

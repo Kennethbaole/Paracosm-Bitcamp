@@ -79,6 +79,32 @@
   overflow-y: auto;
 }
 
+.Section1-text {
+  color: #3bb277;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #3bb277;
+}
+.Section1-content {
+}
+
+.Section2-text {
+  color: #3bb277;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #3bb277;
+  padding-top: 15px;
+}
+.Section2-content {
+}
+
+.Section3-text {
+  color: #3bb277;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #3bb277;
+  padding-top: 15px;
+}
+.Section3-content {
+}
+
 /* Decorative dashed line above the title in the right section */
 .right-divider {
   width: 100%;
@@ -153,6 +179,21 @@
 
 .blink {
   animation: blinkEffect 3s infinite;
+}
+
+@keyframes blinkEffect {
+  0%,
+  66.67% {
+    opacity: 1;
+  }
+  66.67%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.blink2 {
+  animation: blinkEffect 1s infinite;
 }
 
 @keyframes blinkEffect {
