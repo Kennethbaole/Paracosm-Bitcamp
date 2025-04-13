@@ -214,19 +214,6 @@
   }
 }
 
-.fuzzy-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Allows clicks to pass through */
-  background-repeat: repeat;
-  opacity: 0.25; /* Adjust this value for your desired effect */
-  z-index: 0; /* Should be lower than your content */
-  animation: shift 0.2s linear infinite both;
-}
-
 @keyframes shift {
   0% {
     transform: translateX(10%) translateY(10%);
@@ -235,3 +222,23 @@
     transform: translateX(-10%) translateY(-10%);
   }
 }
+
+/* Make sure the Unity container has proper size and placement */
+.unity-container {
+  position: absolute;
+  top: 0;
+  right: 0;     /* Place it on the right side */
+  width: 960px; /* Adjust as needed */
+  height: 600px;
+  z-index: 5;   /* Ensure it's above or below other layers as desired */
+}
+
+/* Optionally, style the Generate wrapper to position your button */
+.generate-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+}
+
