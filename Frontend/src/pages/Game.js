@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import FuzzyOverlay from "./FuzzyOverlay";
 import "./Game.css";
+
 
 function Game() {
   const [showCamera, setShowCamera] = useState(false);
@@ -9,9 +9,6 @@ function Game() {
     setShowCamera(true);
   };
 
-  const handleVR = () => {
-
-  };
 
   return (
     <div className="game-container">
@@ -52,6 +49,7 @@ function Game() {
           <button className="generate-random">{"> GENERATE"}<span className="blink2">_</span></button>
           <button className="vr-activation-button">{"> ENTER"}<span className="blink2">_</span></button>
         </div>
+        <div className="button-border"></div>
         {/* Additional right-side content can be placed here */}
       </div>
 

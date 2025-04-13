@@ -3,6 +3,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: hidden; /* Prevents the overlay from spilling out */
 }
 
 /* Fixed top border block */
@@ -121,6 +122,8 @@
   margin: 0;
   padding: 10px 0;
   border-bottom: 2px dashed #3bb277;
+  border-left: 2px dashed #3bb277;
+  border-right: 2px dashed #3bb277;
 }
 
 /* Right buttons container */
@@ -152,6 +155,12 @@
   background-color: #3bb277;
   color: #000;
   border-color: #3bb277;
+}
+
+.button-border {
+  border-bottom: 2px dashed #3bb277;
+  width: 100%;
+  margin-top: 10px; /* Optional spacing */
 }
 
 /* Bottom-left button remains as before */
@@ -204,5 +213,27 @@
   66.67%,
   100% {
     opacity: 0;
+  }
+}
+
+.fuzzy-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  background-repeat: repeat;
+  opacity: 0.25; /* Adjust this value for your desired effect */
+  z-index: 0; /* Should be lower than your content */
+  animation: shift 0.2s linear infinite both;
+}
+
+@keyframes shift {
+  0% {
+    transform: translateX(10%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-10%) translateY(-10%);
   }
 }
