@@ -1,0 +1,56 @@
+/* Reset global margins (if not already done) */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: monospace; /* Setting monospace font for all elements */
+}
+
+/* Overall container: center content horizontally and vertically */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  width: 100%; /* Take full width */
+  height: 100vh; /* Full viewport height */
+  background-color: #000; /* Dark background */
+  text-align: center; /* Ensure all text is centered */
+  padding-left: 15%; /* MOVE CONTENT TO THE RIGHT */
+}
+
+/* Title styling: ensure text is centered and monospaced */
+.title {
+  width: 100%; /* Take full width */
+}
+
+.title h1 {
+  font-size: 48px; /* Adjust size as needed */
+  font-family: monospace; /* Monospaced font */
+  color: #fff; /* White text */
+  margin: 0 0 40px 0; /* Zero top margin, 40px bottom margin */
+  text-align: center;
+}
+
+/* Start button styling */
+.styled-button {
+  display: block; /* Make button a block element */
+  margin: 0 auto; /* Center horizontally */
+  padding: 20px 40px;
+  font-size: 20px;
+  font-family: monospace; /* Use monospaced font for consistency */
+  color: #3bb277;
+  background-color: #000;
+  border: 2px solid #3bb277;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.styled-button:hover {
+  background-color: #3bb277;
+  color: #000;
+  border-color: #fff;
+}

@@ -1,0 +1,23 @@
+.fuzzy-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: none; /* Temporarily remove the image */
+  background-color: rgba(255, 0, 0, 0.3); /* Red overlay for testing */
+  background-repeat: repeat;
+  opacity: 1; /* Full opacity for debugging */
+  z-index: 0;
+  animation: shift 0.2s linear infinite both;
+}
+
+@keyframes shift {
+  0% {
+    transform: translateX(10%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-10%) translateY(-10%);
+  }
+}

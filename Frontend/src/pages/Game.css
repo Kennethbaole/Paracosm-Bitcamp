@@ -5,73 +5,135 @@
   height: 100vh;
 }
 
-/* Top border block: fixed at the top left and spans the left area */
+/* Fixed top border block */
 .top-left-block {
   position: fixed;
   top: 0;
   left: 0;
-  width: 30vw; /* Left area width */
-  height: 35px; /* Height of the border block */
+  width: 30vw;
+  height: 35px;
   background-color: #3bb277;
   z-index: 10;
 }
 
-/* Left section: fixed below the top block */
+/* Left section */
 .left-section {
   position: fixed;
-  top: 35px; /* Immediately below the top border */
+  top: 35px;
   left: 0;
-  width: 30vw; /* Spans from left edge to the vertical divider */
-  height: calc(
-    100vh - 35px
-  ); /* From below the border to the bottom of the viewport */
+  width: 30vw;
+  height: calc(100vh - 35px);
   box-sizing: border-box;
-  background-color: #000; /* Optional background */
-  overflow: hidden; /* Hide overflow if needed */
+  background-color: #000;
+  overflow: hidden;
   z-index: 5;
 }
 
-/* Text container: styles for static text (when feed is inactive) */
+/* Text container */
 .text-container {
   padding: 10px;
   position: relative;
   z-index: 6;
+  color: #fff;
 }
 
-/* Camera container: occupies the full left section */
+/* Camera container */
 .camera-container {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  top: 0; /* Places the container so its top edge touches the top of left-section */
-  left: 0;
 }
 
-/* Camera feed image: shrinks the feed without cropping, showing the entire view */
+/* Camera feed image */
 .camera-feed {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Scales the image down, preserving aspect ratio; letterboxing may occur */
+  object-fit: contain;
   display: block;
 }
 
-/* Vertical divider: fixed at the boundary of the left area */
+/* Vertical divider */
 .vertical-divider {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: 30vw; /* Positioned at 30% of the viewport width */
-  width: 2px; /* Divider thickness */
+  left: 30vw;
+  width: 2px;
   background-color: #3bb277;
   z-index: 10;
 }
 
-/* Bottom-left button: fixed at the bottom left, spanning the left area */
+/* Right section */
+.right-section {
+  position: fixed;
+  top: 0;
+  left: calc(30vw + 2px);
+  width: calc(70vw - 20px);
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #000;
+  z-index: 5;
+  overflow-y: auto;
+}
+
+/* Decorative dashed line above the title in the right section */
+.right-divider {
+  width: 100%;
+  border-top: 2px dashed #3bb277;
+  margin-bottom: 10px;
+}
+
+/* Title styling */
+.right-title {
+  font-family: monospace;
+  font-size: 22px;
+  color: #3bb277;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 2px dashed #3bb277;
+}
+
+/* Right buttons container */
+.right-buttons {
+  /* Left align the buttons */
+  text-align: left;
+  margin-top: 10px;
+}
+
+/* Common styling for both right-section buttons */
+.right-buttons button {
+  display: block;
+  text-align: left; /* This aligns the text to the left */
+  width: 100%; /* Fill the container's width on hover and by default */
+  font-family: monospace;
+  font-size: 16px;
+  background-color: #000;
+  color: #3bb277;
+  border: 1px solid #000;
+  border-radius: 0;
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-bottom: 0; /* Remove gap between buttons; adjust if needed */
+}
+
+/* Hover effect for right buttons */
+.right-buttons button:hover {
+  background-color: #3bb277;
+  color: #000;
+  border-color: #3bb277;
+}
+
+/* Bottom-left button remains as before */
 .bottom-left-button {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 30vw; /* Matches the left area width */
+  width: 30vw;
   padding: 15px;
   font-size: 16px;
   cursor: pointer;
@@ -84,5 +146,7 @@
 }
 
 .bottom-left-button:hover {
-  border-color: #fff;
+  border-color: #3bb277;
+  background-color: #000;
+  color: #3bb277;
 }

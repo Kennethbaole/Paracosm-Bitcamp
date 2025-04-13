@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FuzzyOverlay from "./FuzzyOverlay";
 import "./Game.css";
 
 function Game() {
@@ -8,15 +9,18 @@ function Game() {
     setShowCamera(true);
   };
 
+  const handleVR = () => {
+
+  };
+
   return (
     <div className="game-container">
-      {/* Fixed top border block */}
+      {/* Render the overlay first */}
+
       <div className="top-left-block"></div>
 
-      {/* Left section positioned from just below the top block to the bottom */}
       <div className="left-section">
         {showCamera ? (
-          // Camera container: shows the video feed full-width of the left area
           <div className="camera-container">
             <img
               className="camera-feed"
@@ -25,18 +29,28 @@ function Game() {
             />
           </div>
         ) : (
-          // Text container: shows your original text when the camera feed is not active
           <div className="text-container">
-            <h2>Section 1</h2>
-            <p>This is some content for section 1.</p>
+            <h2>{"> SECTION 1"}</h2>
+            <p>Shift your world with a gesture. Rotate. Zoom. Explore a place born from silence.</p>
           </div>
         )}
       </div>
 
-      {/* Fixed vertical divider */}
       <div className="vertical-divider"></div>
 
-      {/* Fixed bottom-left button spanning entire left area */}
+      {/* Right section */}
+      <div className="right-section">
+        <div className="right-divider"></div>
+        <h1 className="right-title">
+          THE MAP IS BLANK. THE MEMORY IS YOURS. BUILD THE UNSEEN
+        </h1>
+        <div className="right-buttons">
+          <button className="generate-random">{"> GENERATE"}</button>
+          <button className="vr-activation-button">{"> ENTER"}</button>
+        </div>
+        {/* Additional right-side content can be placed here */}
+      </div>
+
       <button className="bottom-left-button" onClick={handleBegin}>
         {"> BEGIN"}
       </button>
